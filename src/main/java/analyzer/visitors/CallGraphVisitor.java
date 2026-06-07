@@ -1,4 +1,15 @@
-/**\n * 调用图构建器（Call Graph）\n *\n * 程序分析基础数据结构，描述方法之间的调用关系。\n * 每个方法为图中节点，调用关系为有向边 A -> B（A 调用 B）。\n *\n * 应用场景：\n * - 理解代码结构、定位入口函数\n * - 变更影响分析（修改 A 会影响哪些调用者）\n * - 内联优化（Inline）决策支持\n */\npackage analyzer.visitors;
+/**
+ * 调用图构建器（Call Graph）
+ *
+ * 程序分析基础数据结构，描述方法之间的调用关系。
+ * 每个方法为图中节点，调用关系为有向边 A -> B（A 调用 B）。
+ *
+ * 应用场景：
+ * - 理解代码结构、定位入口函数
+ * - 变更影响分析（修改 A 会影响哪些调用者）
+ * - 内联优化（Inline）决策支持
+ */
+package analyzer.visitors;
 
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.expr.MethodCallExpr;
