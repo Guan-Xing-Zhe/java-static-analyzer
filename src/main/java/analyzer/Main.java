@@ -76,8 +76,6 @@ public class Main {
             callGraphVisitor.visit(cu, null);
                         callGraphVisitor.printCallGraph(fileName);
 
-            // AI-enhanced code review
-            analyzer.ai.AIReviewEnhancer aiEnhancer = new analyzer.ai.AIReviewEnhancer();
             String aiReview = aiEnhancer.review(
                 fileName, totalComplexity, methodCount,
                 unusedVisitor.getUnusedMembers(),
