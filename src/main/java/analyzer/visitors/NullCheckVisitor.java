@@ -1,15 +1,3 @@
-/**
- * 空指针风险检测器
- *
- * 简单数据流分析：标记方法参数为"可能为空"，
- * 检测对这些参数进行方法调用时的空指针风险。
- *
- * 这是典型的污点传播分析（Taint Analysis）简化版：
- * - source: 方法参数（不可信来源）
- * - sink: 方法调用（可能触发 NPE）
- *
- * 注：生产级别的分析需要更完善的流敏感分析。
- */
 package analyzer.visitors;
 
 import com.github.javaparser.ast.body.MethodDeclaration;
@@ -22,6 +10,18 @@ import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 空指针风险检测器（Null Safety Analysis）
+ *
+ * 简单数据流分析：标记方法参数为"可能为空"，
+ * 检测对这些参数进行方法调用时的空指针风险。
+ *
+ * 这是污点传播分析（Taint Analysis）的简化实现：
+ * - source: 方法参数（不可信输入）
+ * - sink: 方法调用（可能触发 NPE）
+ *
+ * 注：生产级别需要更完善的流敏感、上下文敏感分析。
+ */
 public class NullCheckVisitor extends VoidVisitorAdapter<Void> {
 
     private final List<String> issues = new ArrayList<>();
