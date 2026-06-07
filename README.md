@@ -53,3 +53,18 @@ src/main/java/analyzer/
 │   ├── NullCheckVisitor.java       # Null dereference warning
 │   └── CallGraphVisitor.java       # Call graph builder
 ```
+
+
+### AI Enhanced Review
+
+The analyzer includes an AI-powered code review module that:
+- Takes static analysis findings (complexity, unused code, null safety, call graph)
+- Generates human-readable review suggestions with fix recommendations
+- Supports both real OpenAI API mode (set OPENAI_API_KEY) and mock/demo mode
+- Demonstrates LLM integration patterns in developer tooling
+
+```
+# Enable AI review with OpenAI
+export OPENAI_API_KEY=sk-your-key
+java -jar target/java-static-analyzer-1.0.0.jar MyFile.java
+```
