@@ -1,3 +1,11 @@
+package analyzer.visitors;
+
+import com.github.javaparser.ast.body.MethodDeclaration;
+import com.github.javaparser.ast.expr.MethodCallExpr;
+import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
+
+import java.util.*;
+
 /**
  * 调用图构建器（Call Graph）
  *
@@ -7,16 +15,8 @@
  * 应用场景：
  * - 理解代码结构、定位入口函数
  * - 变更影响分析（修改 A 会影响哪些调用者）
- * - 内联优化（Inline）决策支持
+ * - 内联优化（Inline）决策
  */
-package analyzer.visitors;
-
-import com.github.javaparser.ast.body.MethodDeclaration;
-import com.github.javaparser.ast.expr.MethodCallExpr;
-import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
-
-import java.util.*;
-
 public class CallGraphVisitor extends VoidVisitorAdapter<Void> {
 
     private final Map<String, List<String>> callGraph = new LinkedHashMap<>();
