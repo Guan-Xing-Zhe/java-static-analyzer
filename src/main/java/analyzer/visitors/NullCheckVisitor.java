@@ -1,4 +1,16 @@
-/**\n * 空指针风险检测器\n *\n * 简单数据流分析：标记方法参数为"可能为空"，\n * 检测对这些参数进行方法调用时的空指针风险。\n *\n * 这是典型的污点传播分析（Taint Analysis）简化版：\n * - source: 方法参数（不可信来源）\n * - sink: 方法调用（可能触发 NPE）\n *\n * 注：生产级别的分析需要更完善的流敏感分析。\n */\npackage analyzer.visitors;
+/**
+ * 空指针风险检测器
+ *
+ * 简单数据流分析：标记方法参数为"可能为空"，
+ * 检测对这些参数进行方法调用时的空指针风险。
+ *
+ * 这是典型的污点传播分析（Taint Analysis）简化版：
+ * - source: 方法参数（不可信来源）
+ * - sink: 方法调用（可能触发 NPE）
+ *
+ * 注：生产级别的分析需要更完善的流敏感分析。
+ */
+package analyzer.visitors;
 
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.expr.MethodCallExpr;
