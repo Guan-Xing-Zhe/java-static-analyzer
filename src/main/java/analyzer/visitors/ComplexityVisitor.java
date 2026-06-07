@@ -1,3 +1,10 @@
+package analyzer.visitors;
+
+import com.github.javaparser.ast.body.MethodDeclaration;
+import com.github.javaparser.ast.stmt.*;
+import com.github.javaparser.ast.expr.ConditionalExpr;
+import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
+
 /**
  * 圈复杂度计算器（Cyclomatic Complexity）
  *
@@ -17,13 +24,6 @@
  * - 21-50: 复杂，建议重构
  * - 50+: 极复杂，必须重构
  */
-package analyzer.visitors;
-
-import com.github.javaparser.ast.body.MethodDeclaration;
-import com.github.javaparser.ast.stmt.*;
-import com.github.javaparser.ast.expr.ConditionalExpr;
-import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
-
 public class ComplexityVisitor extends VoidVisitorAdapter<Void> {
 
     private int totalComplexity = 0;
@@ -40,6 +40,7 @@ public class ComplexityVisitor extends VoidVisitorAdapter<Void> {
         super.visit(md, arg);
     }
 
+    /** 遍历 AST 统计所有控制流节点的数量 */
     private int calculateCyclomaticComplexity(MethodDeclaration md) {
         int complexity = 1;
         complexity += md.findAll(IfStmt.class).size();
