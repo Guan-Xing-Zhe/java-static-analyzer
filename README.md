@@ -4,6 +4,9 @@ A static analysis tool for Java source code that detects code quality issues usi
 
 Built on top of [JavaParser](https://github.com/javaparser/javaparser), demonstrating practical application of AST traversal, control flow analysis, and code metrics computation.
 
+基于 JavaParser 的 Java 静态分析工具，演示程序分析中的抽象语法树遍历、控制流复杂度度量、
+未使用代码检测、空指针安全警告及调用图构建等关键技术。
+
 ## Analysis Capabilities
 
 | Analysis | Description |
