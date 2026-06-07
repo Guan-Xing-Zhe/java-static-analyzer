@@ -1,4 +1,4 @@
-package analyzer.visitors;
+/**\n * 圈复杂度计算器（Cyclomatic Complexity）\n *\n * 圈复杂度 = 1 + 控制流分支数，衡量方法的逻辑复杂程度。\n * 理论来源：Thomas McCabe 于 1976 年提出的软件度量指标。\n *\n * 计数规则：\n * - if/else if/else 每个条件 +1\n * - while/for/foreach 每个循环 +1\n * - && / || 每个逻辑运算符 +1（通过 ConditionalExpr）\n * - switch 每个 case +1\n * - catch 每个异常处理器 +1\n *\n * 业界参考：\n * - 1-10: 简单，低风险\n * - 11-20: 中等，建议关注\n * - 21-50: 复杂，建议重构\n * - 50+: 极复杂，必须重构\n */\npackage analyzer.visitors;
 
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.stmt.*;
