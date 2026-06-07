@@ -74,7 +74,17 @@ public class Main {
             // Call graph
             CallGraphVisitor callGraphVisitor = new CallGraphVisitor();
             callGraphVisitor.visit(cu, null);
-            callGraphVisitor.printCallGraph(fileName);
+                        callGraphVisitor.printCallGraph(fileName);
+
+            // AI-enhanced code review
+            analyzer.ai.AIReviewEnhancer aiEnhancer = new analyzer.ai.AIReviewEnhancer();
+            String aiReview = aiEnhancer.review(
+                fileName, totalComplexity, methodCount,
+                unusedVisitor.getUnusedMembers(),
+                nullCheckVisitor.getIssues(),
+                "Total methods: " + methodCount
+            );
+            System.out.println(aiReview);
 
         } catch (IOException e) {
             System.err.println("Error reading file: " + filePath + " - " + e.getMessage());
