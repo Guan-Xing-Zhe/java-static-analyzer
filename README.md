@@ -28,18 +28,21 @@ java -jar target/java-static-analyzer-1.0.0.jar /path/to/project/src
 
 ## Sample Output
 
+Running the analyzer on its own `Main.java`:
+
 ```
-========== Analyzing: src/example/Calculator.java ==========
-  [Complexity] Method 'add' (line 5): complexity = 1
-  [Complexity] Method 'evaluate' (line 10): complexity = 7
-[Complexity] Total cyclomatic complexity: 8 (methods: 2, avg: 4.0)
+========== Analyzing: src/main/java/analyzer/Main.java ==========
+  [Complexity] Method 'main' (line 16): complexity = 3
+  [Complexity] Method 'analyze' (line 33): complexity = 8
+[Complexity] Total cyclomatic complexity: 11 (methods: 2, avg: 5.5)
 [Unused Code] No unused private members detected.
 [Null Safety] Potential null pointer issues:
-  - Line 12: Possible NPE on method call 'equals' from possibly null reference: input
-[Call Graph] Method call relationships:
-  evaluate
-    -> add
-    -> subtract
+  - Line 35: Possible NPE on method call 'toFile' from possibly null reference: filePath
+[Call Graph] Method call relationships in src/main/java/analyzer/Main.java:
+  main
+    -> println
+    -> exit
+    -> get
 ```
 
 ## Project Structure
