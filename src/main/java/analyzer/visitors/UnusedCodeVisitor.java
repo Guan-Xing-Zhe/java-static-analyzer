@@ -1,6 +1,7 @@
 package analyzer.visitors;
 
 import com.github.javaparser.ast.body.*;
+import com.github.javaparser.ast.expr.MethodCallExpr;
 import com.github.javaparser.ast.expr.NameExpr;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 
@@ -34,6 +35,14 @@ public class UnusedCodeVisitor extends VoidVisitorAdapter<Void> {
     public void visit(NameExpr ne, Void arg) {
         usedNames.add(ne.getNameAsString());
         super.visit(ne, arg);
+    }
+
+    @Override
+    public void visit(MethodCallExpr mce, Void arg) {
+        // Unscoped calls such as `analyze(input)` are MethodCallExpr, not NameExpr,
+        // so the method name has to be recorded here as well.
+        usedNames.add(mce.getNameAsString());
+        super.visit(mce, arg);
     }
 
     public boolean hasUnusedMembers() {
